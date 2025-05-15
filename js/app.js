@@ -25,24 +25,29 @@ function showToast(message, type = "info") {
   }).showToast();
 }
 
-function generateCertificate() {
-  const name = document.getElementById("nameInput").value.trim();
-  if (!name) {
-    showToast("⚠️ দয়া করে নাম দিন", "error");
-    return;
+async function generateCertificate() {
+    const name = document.getElementById("nameInput").value.trim();
+    if (!name) {
+      showToast("⚠️ দয়া করে নাম দিন", "error");
+      return;
+    }
+  
+    // ✅ সুনির্দিষ্টভাবে ফন্ট লোড করাও
+    await document.fonts.load('58px "Pinyon Script"');
+    await document.fonts.ready;
+  
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+  
+    ctx.font = '58px "Pinyon Script"';
+    ctx.fillStyle = "#1e3a8a";
+    ctx.textAlign = "center";
+    ctx.fillText(name, canvas.width / 2, 400);
+  
+    canvas.classList.remove("hidden");
+    showToast("✅ সার্টিফিকেট তৈরি হয়েছে", "success");
   }
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-
-  ctx.font = '58px "Pinyon Script", cursive';
-  ctx.fillStyle = "#1e3a8a";
-  ctx.textAlign = "center";
-  ctx.fillText(name, canvas.width / 2, 400);
-
-  canvas.classList.remove("hidden");
-  showToast("✅ সার্টিফিকেট তৈরি হয়েছে", "success");
-}
+  
 
 function downloadAsPDF() {
   const name =

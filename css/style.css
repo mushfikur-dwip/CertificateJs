@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Pinyon+Script&display=swap');
+
+@font-face {
+    font-family: 'Pinyon Script';
+    src: url('fonts/PinyonScript-Regular.ttf') format('truetype');
+  }
+  
 body {
     font-family: "Hind Siliguri", sans-serif;
 }
