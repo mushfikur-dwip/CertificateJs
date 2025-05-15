@@ -2,8 +2,9 @@
 
 @font-face {
     font-family: 'Pinyon Script';
-    src: url('fonts/PinyonScript-Regular.ttf') format('truetype');
+    src: url('../fonts/PinyonScript-Regular.ttf') format('truetype');
   }
+  
   
 body {
     font-family: "Hind Siliguri", sans-serif;
