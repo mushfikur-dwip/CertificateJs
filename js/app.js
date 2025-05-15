@@ -2,11 +2,9 @@ const canvas = document.getElementById("certificateCanvas");
 const ctx = canvas.getContext("2d");
 
 const bgImage = new Image();
-bgImage.src = "static/CertificateAIBAITCLUB.png"; // ✅ ছবিটি এই ফোল্ডারে থাকতে হবে
+bgImage.src = "static/CertificateAIBAITCLUB.png";
 
-bgImage.onload = () => {
-  // Initially hide preview until generated
-};
+bgImage.onload = () => {};
 
 function showToast(message, type = "info") {
   Toastify({
@@ -26,13 +24,14 @@ function showToast(message, type = "info") {
 }
 
 async function generateCertificate() {
+    const downloadBtn = document.getElementById("downloadBtn");
+    downloadBtn.classList.remove("hidden");
     const name = document.getElementById("nameInput").value.trim();
     if (!name) {
-      showToast("⚠️ দয়া করে নাম দিন", "error");
+      showToast("দয়া করে নাম দিন", "error");
       return;
     }
   
-    // ✅ সুনির্দিষ্টভাবে ফন্ট লোড করাও
     await document.fonts.load('58px "Pinyon Script"');
     await document.fonts.ready;
   
@@ -45,7 +44,7 @@ async function generateCertificate() {
     ctx.fillText(name, canvas.width / 2, 400);
   
     canvas.classList.remove("hidden");
-    showToast("✅ সার্টিফিকেট তৈরি হয়েছে", "success");
+    showToast("সার্টিফিকেট তৈরি হয়েছে", "success");
   }
   
 
@@ -63,5 +62,5 @@ function downloadAsPDF() {
   pdf.addImage(imageData, "PNG", 0, 0, canvas.width, canvas.height);
   pdf.save(`${name}_certificate.pdf`);
 
-  showToast("📄 PDF ডাউনলোড হয়েছে", "success");
+  showToast("PDF ডাউনলোড হয়েছে", "success");
 }

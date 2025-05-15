@@ -17,17 +17,12 @@
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 </head>
-<style>
-    @font-face {
-        font-family: 'Pinyon Script';
-        src: url('fonts/PinyonScript-Regular.ttf') format('truetype');
-    }
-</style>
-  
+
+
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center px-4">
 
     <div class="bg-white shadow-xl rounded-xl p-6 w-full max-w-xl text-center">
-        <h1 class="text-2xl md:text-3xl font-bold text-indigo-700 mb-4">🎓 সার্টিফিকেট জেনারেটর</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-indigo-700 mb-4">সার্টিফিকেট জেনারেটর</h1>
 
         <form onsubmit="event.preventDefault(); generateCertificate();" class="space-y-4">
             <div class="text-left">
@@ -42,15 +37,25 @@
                     class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition">
                     সার্টিফিকেট তৈরি করুন
                 </button>
-                <button type="button" onclick="downloadAsPDF()"
+                <!-- <button id="downloadBtn" type="button" onclick="downloadAsPDF()"
                     class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition">
                     PDF ডাউনলোড করুন
+                </button> -->
+                <button id="downloadBtn" type="button" onclick="downloadAsPDF()"
+                    class="hidden bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition">
+                    PDF ডাউনলোড করুন 
                 </button>
             </div>
+
         </form>
 
         <canvas id="certificateCanvas" width="1086" height="768"
-            class="hidden mt-6 border border-gray-300 rounded-lg shadow-sm"></canvas>
+            class="hidden mt-6 border border-gray-300 rounded-lg shadow-sm">
+        </canvas>
+        <div>
+            <p class="text-center text-xs text-gray-400 mt-6">
+                Build By: <a target="_blank" href="http://fb.me/mushfikur.a.k">Mushfikur Rahman</a></p>
+        </div>
     </div>
 
     <!-- jsPDF & app -->
